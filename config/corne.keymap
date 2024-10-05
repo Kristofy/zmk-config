@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include "keys_hu.h"
 
 / {
         keymap {
@@ -20,9 +21,9 @@
 //                    | REP | TAB | SPC |   | NAV | SYM  | NUM |
                         bindings = <
    &none     &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &none    &kp BSPC
-   &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp RET
-   &kp LSHFT &kp Z &kp X &kp C &kp D &kp V   &kp N &kp M  &kp COMMA &kp DOT &kp MINUS &kp DEL
-                  &key_repeat &kp TAB &kp SPACE   &none &none &none
+   &kp ESC   &kp A &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp none
+   &kp LSHFT &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp MINUS &kp none
+                  &key_repeat &kp TAB &kp none   &kp SPACE &none &none
                         >;
                 };
                 lower_layer {
