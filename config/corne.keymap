@@ -21,7 +21,7 @@
 //                    | REP | TAB | SPC |   | NAV | SYM  | NUM |
                         bindings = <
    &none     &kp HU_Q &kp HU_W &kp HU_F &kp HU_P &kp HU_B   &kp HU_J &kp HU_L  &kp HU_U &kp HU_Y   &none    &kp BSPC
-   &kp ESC   &kp HU_A &kp HU_R &kp HU_S &kp HU_T &kp HU_G   &kp HU_M &kp HU_N  &kp HU_E &kp HU_I   &kp HU_O &none
+   &kp ESC   &kp HU_A &kp HU_R &kp HU_S &kp HU_T &kp HU_G   &kp HU_M &kp HU_N  &kp HU_E &kp HU_I   &kp HU_O &kp ENT
    &kp LSHFT &kp HU_Z &kp HU_X &kp HU_C &kp HU_D &kp HU_V   &kp HU_K &kp HU_H  &kp HU_COMMA &kp HU_DOT &kp HU_MINUS &none
                   &key_repeat &kp TAB &none   &kp SPACE &none &none
                         >;
