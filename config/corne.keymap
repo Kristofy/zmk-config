@@ -13,39 +13,26 @@
         keymap {
                 compatible = "zmk,keymap";
 
-                alpha_layer {
-// -----------------------------------------------------------------------------------------
-// | NONE |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  ¬  | BSPC |
-// | ESC  |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  | ENT  |
-// | SHFT |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |  -  | DEL  |
-//                    | REP | TAB | SPC |   | NAV | SYM  | NUM |
+                default_layer {
                         bindings = <
-   &none     &kp HU_Q &kp HU_W &kp HU_F &kp HU_P &kp HU_B   &kp HU_J &kp HU_L  &kp HU_U &kp HU_Y   &none    &kp BSPC
-   &kp ESC   &kp HU_A &kp HU_R &kp HU_S &kp HU_T &kp HU_G   &kp HU_M &kp HU_N  &kp HU_E &kp HU_I   &kp HU_O &kp RET
+   &none     &kp HU_Q &kp HU_W &kp HU_F &kp HU_P &kp HU_B   &kp HU_J &kp HU_L  &kp HU_U     &kp HU_Y   &kp HU_SEMI        &kp BSPC
+   &kp ESC   &kp HU_A &kp HU_R &kp HU_S &kp HU_T &kp HU_G   &kp HU_M &kp HU_N  &kp HU_E     &kp HU_I   &kp HU_O     &kp RET
    &kp LSHFT &kp HU_Z &kp HU_X &kp HU_C &kp HU_D &kp HU_V   &kp HU_K &kp HU_H  &kp HU_COMMA &kp HU_DOT &kp HU_MINUS &none
-                  &key_repeat &kp TAB &none   &kp SPACE &none &none
+                  &key_repeat &kp TAB &ml NUMBER   &kp SPACE &none &none
                         >;
                 };
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+                number_layer {
+                        label = "NUMBER";
                         bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                                    &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+   &kp HU_N0 &kp HU_N1 &kp HU_N2 &kp HU_N3 &kp HU_N4 &kp HU_N5    &kp HU_N6 &kp HU_N7 &kp HU_N8 &kp HU_N9 &none &none
+   &none     &kp ALT   &kp GUI   &kp CTRL  &kp SHIFT &kp HU_N1    &none     &kp HU_N4 &kp HU_N5 &kp HU_N6 &none &none
+   &none     &none     &none     &kp HU_N0 &kp HU_N9 &kp HU_N2    &kp HU_N0 &kp HU_N1 &kp HU_N2 &kp HU_N3 &none &none
+                                 &none     &none     &none        &none &none &none
                         >;
                 };
 
-                raise_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+                symbol_layer {
+                        label = "SYMBOL";
                         bindings = <
    &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
    &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
