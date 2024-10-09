@@ -30,7 +30,7 @@
                         label = "NUMBER";
                         bindings = <
    &kp HU_N0 &kp HU_N1 &kp HU_N2 &kp HU_N3 &kp HU_N4 &kp HU_N5    &kp HU_N6 &kp HU_N7 &kp HU_N8 &kp HU_N9 &none &none
-   &none     &kp ALT   &kp GUI   &kp CTRL  &kp SHIFT &kp HU_N1    &none     &kp HU_N4 &kp HU_N5 &kp HU_N6 &none &none
+   &none     &kp LALT   &kp LGUI   &kp LCTRL  &kp LSHIFT &kp HU_N1    &none     &kp HU_N4 &kp HU_N5 &kp HU_N6 &none &none
    &none     &none     &none     &kp HU_N0 &kp HU_N9 &kp HU_N2    &kp HU_N0 &kp HU_N1 &kp HU_N2 &kp HU_N3 &none &none
                                  &none     &none     &none        &none &none &none
                         >;
