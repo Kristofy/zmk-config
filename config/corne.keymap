@@ -57,10 +57,15 @@ ZMK_HOLD_TAP(hmr,
 
                 default_layer {
                         bindings = <
-     &none      &kp HU_Q  &kp HU_W  &kp HU_F  &kp HU_P  &kp HU_B     &kp HU_J  &kp HU_L  &kp HU_U      &kp HU_Y    &kp HU_SEMI   &kp BSPC
-     &kp ESC    &hml LALT HU_A  &hml LGUI HU_R  &hml LCTRL HU_S  &hml LSHIFT HU_T  &kp HU_G     &kp HU_M  &hmr RSHIFT HU_N  &hmr RCTLR HU_E      &hmr RGUI HU_I    &hmr RALT HU_O      &kp RET
-     &kp LSHFT  &kp HU_Z  &kp HU_X  &kp HU_C  &kp HU_D  &kp HU_V     &kp HU_K  &kp HU_H  &kp HU_COMMA  &kp HU_DOT  &kp HU_MINUS  &none
-                                 &key_repeat  &kp TAB  &mo L_NUM     &kp SPACE  &none  &none
+// ╭───────────╮╭────────────────┬────────────────┬─────────────────┬──────────────────┬───────────╮   ╭───────────┬──────────────────┬─────────────────┬─────────────────┬────────────────╮╭──────────╮ 
+     &none        &kp HU_Q         &kp HU_W         &kp HU_F          &kp HU_P           &kp HU_B        &kp HU_J    &kp HU_L           &kp HU_U          &kp HU_Y          &kp HU_SEMI       &kp BSPC
+// ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├──────────┤
+     &kp ESC      &hml LALT HU_A   &hml LGUI HU_R   &hml LCTRL HU_S   &hml LSHIFT HU_T   &kp HU_G        &kp HU_M    &hmr RSHIFT HU_N   &hmr RCTLR HU_E   &hmr RGUI HU_I    &hmr RALT HU_O    &kp RET
+// ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├──────────┤
+     &kp LSHFT    &kp HU_Z         &kp HU_X         &kp HU_C          &kp HU_D           &kp HU_V        &kp HU_K    &kp HU_H           &kp HU_COMMA      &kp HU_DOT        &kp HU_MINUS      &none
+// ╰───────────╯╰────────────────┴────────────────┼─────────────────┼──────────────────┼───────────╯   ├───────────┼──────────────────┼─────────────────┼─────────────────┴────────────────╯╰──────────╯
+                                                    &key_repeat       &kp TAB            &mo L_NUM       &kp SPACE   &none              &none
+//                                                ╰─────────────────┴──────────────────┴───────────╯   ╰───────────┴──────────────────┴─────────────────╯
                         >;
                 };
                 number_layer {
