@@ -50,8 +50,8 @@ ZMK_HOLD_TAP(hmr,
 #define DEFAULT 0
 #define L_NUM   1
 #define L_SYM   2
-#define L_NAV   3
-#define L_SYS   4
+#define L_SYS   3
+#define L_NAV   4
 
 &soft_off {
     hold-time-ms = <5000>; // Only turn off it the key is held for 5 seconds or longer.
