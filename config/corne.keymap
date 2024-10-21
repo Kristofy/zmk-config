@@ -51,6 +51,7 @@ ZMK_HOLD_TAP(hmr,
 #define L_NUM   1
 #define L_SYM   2
 #define L_NAV   3
+#define L_SYS   4
 
 &soft_off {
     hold-time-ms = <5000>; // Only turn off it the key is held for 5 seconds or longer.
@@ -63,7 +64,7 @@ ZMK_HOLD_TAP(hmr,
                 default_layer {
                         bindings = <
 // ╭───────────╮╭────────────────┬────────────────┬─────────────────┬──────────────────┬───────────╮   ╭───────────┬──────────────────┬─────────────────┬─────────────────┬────────────────╮╭──────────╮ 
-     &soft_off    &kp HU_Q         &kp HU_W         &kp HU_F          &kp HU_P           &kp HU_B        &kp HU_J    &kp HU_L           &kp HU_U          &kp HU_Y          &kp HU_SEMI       &kp BSPC
+     &sl L_SYS    &kp HU_Q         &kp HU_W         &kp HU_F          &kp HU_P           &kp HU_B        &kp HU_J    &kp HU_L           &kp HU_U          &kp HU_Y          &kp HU_SEMI       &kp BSPC
 // ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├──────────┤
      &kp ESC      &hml LALT HU_A   &hml LGUI HU_R   &hml LCTRL HU_S   &hml LSHIFT HU_T   &kp HU_G        &kp HU_M    &hmr RSHIFT HU_N   &hmr RCTRL HU_E   &hmr RGUI HU_I    &hmr RALT HU_O    &kp RET
 // ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├──────────┤
@@ -97,6 +98,23 @@ ZMK_HOLD_TAP(hmr,
                              &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };
+
+                system_layer {
+                        label = "SYSTEM";
+                        bindings = <
+// ╭───────────╮╭───────────┬───────────┬───────────┬────────────┬─────────────╮   ╭───────────┬───────────┬───────────┬───────────┬───────╮╭───────╮ 
+     &soft_off    &BT_SEL 0   &BT_SEL 1   &BT_SEL 2   &BT_SEL 3    &BT_SEL 4         &none       &none       &none       &none       &none    &none
+// ├───────────┤├───────────┼───────────┼───────────┼────────────┼─────────────┤   ├───────────┼───────────┼───────────┼───────────┼───────┤├───────┤
+     &BT_CLR      &none       &none       &none       &none        &sys_reset        &none       &none       &none       &none       &none    &none
+// ├───────────┤├───────────┼───────────┼───────────┼────────────┼─────────────┤   ├───────────┼───────────┼───────────┼───────────┼───────┤├───────┤
+     &BT_DISC     &none       &none       &none       &none        &bootloader       &none       &none       &none       &none       &none    &none
+// ╰───────────╯╰───────────┴───────────┼───────────┼────────────┼─────────────┤   ├───────────┼───────────┼───────────┼───────────┴───────╯╰───────╯
+                                          &none       &none        &none             &none       &none       &none
+//                                      ╰───────────┴────────────┴─────────────╯   ╰───────────┴───────────┴───────────╯
+                        >;
+                };
+
+
         };
 };
 
