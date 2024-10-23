@@ -79,9 +79,9 @@ ZMK_HOLD_TAP(hmr,
 // ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
      &kp ESC      &hml LALT HU_A   &hml LGUI HU_R   &hml LCTRL HU_S   &hml LSHIFT HU_T   &kp HU_G        &kp HU_M    &hmr RSHIFT HU_N   &hmr RCTRL HU_E   &hmr RGUI HU_I    &hmr RALT HU_O    &kp RET
 // ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
-     &kp LSHFT    &kp HU_Z         &kp HU_X         &kp HU_C          &kp HU_D           &kp HU_V        &kp HU_K    &kp HU_H           &kp HU_COMMA      &kp HU_DOT        &kp HU_MINUS      &mo L_NAV
+     &kp LSHFT    &kp HU_Z         &kp HU_X         &kp HU_C          &kp HU_D           &kp HU_V        &kp HU_K    &kp HU_H           &kp HU_COMMA      &kp HU_DOT        &kp HU_MINUS      &mo L_SYS
 // ╰───────────╯╰────────────────┴────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┴────────────────╯╰───────────╯
-                                                    &key_repeat       &hml_m L_HUN TAB  &mo L_NUM       &kp SPACE   &mo L_SYM          &mo L_SYS
+                                                    &key_repeat       &hml_m L_HUN TAB   &mo L_NUM       &kp SPACE   &mo L_SYM          &key_repeat
 //                                                ╰─────────────────┴──────────────────┴───────────╯   ╰───────────┴──────────────────┴─────────────────╯
                         >;
                 };
