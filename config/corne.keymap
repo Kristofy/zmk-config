@@ -58,11 +58,12 @@ ZMK_HOLD_TAP(hmr,
 )
 
 
-#define DEFAULT 0
-#define L_NUM   1
-#define L_SYM   2
-#define L_SYS   3
-#define L_HUN   4
+#define DEFAULT     0
+#define L_COLEMAK   1
+#define L_NUM       2
+#define L_SYM       3
+#define L_SYS       4
+#define L_HUN       5
 
 &soft_off {
     hold-time-ms = <5000>; // Only turn off it the key is held for 5 seconds or longer.
@@ -75,7 +76,7 @@ ZMK_HOLD_TAP(hmr,
                 default_layer {
                         bindings = <
 // ╭────────────────╮╭────────────────┬────────────────┬─────────────────┬──────────────────┬───────────╮   ╭───────────┬──────────────────┬─────────────────┬─────────────────┬────────────────╮╭───────────╮ 
-     &sl L_SYS         &kp HU_Q         &kp HU_W         &kp HU_E          &kp HU_R           &kp HU_T        &kp HU_Z    &kp HU_U           &kp HU_I          &kp HU_O          &kp HU_P          &kp BSPC
+     &to L_COLEMAK     &kp HU_Q         &kp HU_W         &kp HU_E          &kp HU_R           &kp HU_T        &kp HU_Z    &kp HU_U           &kp HU_I          &kp HU_O          &kp HU_P          &kp BSPC
 // ├────────────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
      &kp ESC           &hml LALT HU_A   &hml LGUI HU_S   &hml LCTRL HU_D   &hml LSHIFT HU_F   &kp HU_G        &kp HU_H    &hmr RSHIFT HU_J   &hmr RCTRL HU_K   &hmr RGUI HU_L    &hmr RALT HU_E_ACUTE    &kp RET
 // ├────────────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
@@ -85,6 +86,23 @@ ZMK_HOLD_TAP(hmr,
 //                                                     ╰─────────────────┴──────────────────┴───────────╯   ╰───────────┴──────────────────┴─────────────────╯
                         >;
                 };
+
+
+                colemak_layer {
+                        label = "COLEMAK";
+                        bindings = <
+// ╭───────────╮╭────────────────┬────────────────┬─────────────────┬──────────────────┬───────────╮   ╭───────────┬──────────────────┬─────────────────┬─────────────────┬────────────────╮╭───────────╮
+     &to L_DEFAULT  &kp HU_Q         &kp HU_W         &kp HU_F          &kp HU_P           &kp HU_B        &kp HU_J    &kp HU_L           &kp HU_U          &kp HU_Y          &kp HU_SEMI       &kp BSPC
+// ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
+     &kp ESC      &hml LALT HU_A   &hml LGUI HU_R   &hml LCTRL HU_S   &hml LSHIFT HU_T   &kp HU_G        &kp HU_M    &hmr RSHIFT HU_N   &hmr RCTRL HU_E   &hmr RGUI HU_I    &hmr RALT HU_O    &kp RET
+// ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
+     &kp LSHFT    &kp HU_Z         &kp HU_X         &kp HU_C          &kp HU_D           &kp HU_V        &kp HU_K    &kp HU_H           &kp HU_COMMA      &kp HU_DOT        &kp HU_MINUS      &mo L_SYS
+// ╰───────────╯╰────────────────┴────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┴────────────────╯╰───────────╯
+                                                    &key_repeat       &hml_m L_HUN TAB   &mo L_NUM       &kp SPACE   &mo L_SYM          &key_repeat
+//                                                ╰─────────────────┴──────────────────┴───────────╯   ╰───────────┴──────────────────┴─────────────────╯
+                        >;
+                };
+
                 number_layer {
                         label = "NUMBER";
                         bindings = <
