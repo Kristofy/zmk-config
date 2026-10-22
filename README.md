@@ -21,10 +21,11 @@ Hungarian and code, and for window management with the mouse in the right hand.
 | [`config/west.yml`](config/west.yml) | Dependencies and their versions: ZMK and [zmk-helpers](https://github.com/urob/zmk-helpers). |
 | [`build.yaml`](build.yaml) | Which firmware files the build produces: left half, right half, settings reset. |
 | [`.github/workflows/build.yml`](.github/workflows/build.yml) | Builds the firmware on GitHub on every push. |
+| [`scripts/`](scripts/) | Checks that the keymap grids and README diagrams line up and match the keymap. |
 
 ## Layers
 
-`▽` falls through to the layer below, an empty key does nothing.
+`___` falls through to the layer below (as in the keymap), an empty key does nothing.
 `a·Alt` is `a` on tap, Alt on hold. `Rep/NAV` is Repeat on tap, the NAV layer on hold.
 
 ### Base
@@ -52,13 +53,13 @@ Meta/Ctrl/Alt + digit work with the left hand alone; `GUI+Sft` is for
 
 ```
 ╭───────┬───────┬───────┬───────┬───────┬───────╮   ╭───────┬───────┬───────┬───────┬───────┬───────╮
-│   0   │   1   │   2   │   3   │   4   │   5   │   │   6   │   7   │   8   │   9   │   +   │   ▽   │
+│   0   │   1   │   2   │   3   │   4   │   5   │   │   6   │   7   │   8   │   9   │   +   │  ___  │
 ├───────┼───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┼───────┤
-│   ▽   │  Alt  │  GUI  │  Ctrl │ Shift │   1   │   │   .   │   4   │   5   │   6   │   ,   │   ▽   │
+│  ___  │  Alt  │  GUI  │  Ctrl │ Shift │   1   │   │   .   │   4   │   5   │   6   │   ,   │  ___  │
 ├───────┼───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┼───────┤
-│   ▽   │GUI+Sft│   3   │   0   │   9   │   2   │   │   0   │   1   │   2   │   3   │   -   │   ▽   │
+│  ___  │GUI+Sft│   3   │   0   │   9   │   2   │   │   0   │   1   │   2   │   3   │   -   │  ___  │
 ╰───────┴───────┴───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┴───────┴───────╯
-                        │   ▽   │   ▽   │   ▽   │   │   ▽   │   ▽   │   ▽   │
+                        │  ___  │  ___  │  ___  │   │  ___  │  ___  │  ___  │
                         ╰───────┴───────┴───────╯   ╰───────┴───────┴───────╯
 ```
 
@@ -71,11 +72,11 @@ the brackets are where a Hungarian keyboard has them.
 ╭───────┬───────┬───────┬───────┬───────┬───────╮   ╭───────┬───────┬───────┬───────┬───────┬───────╮
 │       │   '   │   "   │   +   │   !   │   %   │   │   /   │   =   │   (   │   )   │   `   │       │
 ├───────┼───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┼───────┤
-│   \   │   ~   │   |   │   ^   │   [   │   ]   │   │   ←   │   ↓   │   ↑   │   →   │   $   │       │
+│   \   │   ~   │   |   │   ^   │   [   │   ]   │   │  Left │  Down │   Up  │ Right │   $   │       │
 ├───────┼───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┼───────┤
 │       │   <   │   >   │   #   │   &   │   @   │   │       │   {   │   }   │       │   *   │       │
 ╰───────┴───────┴───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┴───────┴───────╯
-                        │   ▽   │   ▽   │   ▽   │   │   ▽   │   ▽   │   ▽   │
+                        │  ___  │  ___  │  ___  │   │  ___  │  ___  │  ___  │
                         ╰───────┴───────┴───────╯   ╰───────┴───────┴───────╯
 ```
 
@@ -86,13 +87,13 @@ and press arrows on the right, e.g. Meta+Ctrl+← to switch desktops.
 
 ```
 ╭───────┬───────┬───────┬───────┬───────┬───────╮   ╭───────┬───────┬───────┬───────┬───────┬───────╮
-│  F10  │   F1  │   F2  │   F3  │   F4  │   F5  │   │   F6  │   F7  │   F8  │   F9  │  F11  │   ▽   │
+│  F10  │   F1  │   F2  │   F3  │   F4  │   F5  │   │   F6  │   F7  │   F8  │   F9  │  F11  │  ___  │
 ├───────┼───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┼───────┤
-│   ▽   │  Alt  │  GUI  │  Ctrl │ Shift │       │   │   ←   │   ↓   │   ↑   │   →   │  F12  │   ▽   │
+│  ___  │  Alt  │  GUI  │  Ctrl │ Shift │       │   │  Left │  Down │   Up  │ Right │  F12  │  ___  │
 ├───────┼───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┼───────┤
-│   ▽   │  Undo │  Cut  │  Copy │       │ Paste │   │  Home │  PgDn │  PgUp │  End  │       │       │
+│  ___  │  Undo │  Cut  │  Copy │       │ Paste │   │  Home │  PgDn │  PgUp │  End  │       │       │
 ╰───────┴───────┴───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┴───────┴───────╯
-                        │   ▽   │   ▽   │   ▽   │   │   ▽   │   ▽   │   ▽   │
+                        │  ___  │  ___  │  ___  │   │  ___  │  ___  │  ___  │
                         ╰───────┴───────┴───────╯   ╰───────┴───────┴───────╯
 ```
 
@@ -119,13 +120,13 @@ an accent into the next letter or Space works.
 
 ```
 ╭───────┬───────┬───────┬───────┬───────┬───────╮   ╭───────┬───────┬───────┬───────┬───────┬───────╮
-│   ▽   │   ▽   │   ▽   │   ▽   │   ▽   │   ▽   │   │   ▽   │   ű   │   ü   │   ú   │   ö   │   ▽   │
+│  ___  │  ___  │  ___  │  ___  │  ___  │  ___  │   │  ___  │   ű   │   ü   │   ú   │   ö   │  ___  │
 ├───────┼───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┼───────┤
-│   ▽   │   ▽   │   ▽   │   ▽   │   ▽   │   ▽   │   │   ▽   │   á   │   é   │   í   │   ó   │   ▽   │
+│  ___  │  ___  │  ___  │  ___  │  ___  │  ___  │   │  ___  │   á   │   é   │   í   │   ó   │  ___  │
 ├───────┼───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┼───────┤
-│   ▽   │   ▽   │   ▽   │   ▽   │   ▽   │   ▽   │   │   ▽   │   ▽   │   ▽   │   ▽   │   ő   │   ▽   │
+│  ___  │  ___  │  ___  │  ___  │  ___  │  ___  │   │  ___  │  ___  │  ___  │  ___  │   ő   │  ___  │
 ╰───────┴───────┴───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┴───────┴───────╯
-                        │   ▽   │   ▽   │   ▽   │   │   ▽   │   ▽   │   ▽   │
+                        │  ___  │  ___  │  ___  │   │  ___  │  ___  │  ___  │
                         ╰───────┴───────┴───────╯   ╰───────┴───────┴───────╯
 ```
 
@@ -164,8 +165,17 @@ an accent into the next letter or Space works.
 - **Tune timing**: the home row mods' settings are in `MAKE_HRM`, so one change
   applies to both hands. If mods trigger by accident, raise `tapping-term-ms`;
   if letters come out as mods while typing fast, raise `require-prior-idle-ms`.
-- The layer grids are aligned by hand: keep the columns lined up when you edit,
-  and update the diagrams in this README too.
+- The layer grids and the README diagrams are maintained by hand. After editing,
+  run the checks below: they catch misaligned columns and README diagrams that
+  no longer match the keymap.
+
+  ```sh
+  python3 scripts/check_alignment.py README.md config/corne.keymap
+  python3 scripts/check_readme_keys.py
+  ```
+
+  Use plain ASCII in the diagrams (the accented letters are fine): symbols like
+  arrows or `▽` are drawn wider than one column by some fonts.
 
 ## Building and flashing
 
