@@ -56,6 +56,18 @@ ZMK_HOLD_TAP(hmr,
     hold-trigger-on-release;             // delay positional check until key-release
 )
 
+/* shift on hold, caps word on tap */
+ZMK_HOLD_TAP(shift_cw,
+    flavor = "hold-preferred";
+    tapping-term-ms = <200>;
+    bindings = <&kp>, <&caps_word>;
+)
+
+/* default continue-list assumes a US host layout; use the Hungarian -/_ key */
+&caps_word {
+    continue-list = <HU_MINUS BSPC DEL>;
+};
+
 
 #define L_DEFAULT   0
 #define L_NUM       1
@@ -74,11 +86,11 @@ ZMK_HOLD_TAP(hmr,
                 default_layer {
                         bindings = <
 // ╭───────────╮╭────────────────┬────────────────┬─────────────────┬──────────────────┬───────────╮   ╭───────────┬──────────────────┬─────────────────┬─────────────────┬────────────────╮╭───────────╮
-     &sl L_SYS    &kp HU_Q         &kp HU_W         &kp HU_F          &kp HU_P           &kp HU_B        &kp HU_J    &kp HU_L           &kp HU_U          &kp HU_Y          &kp HU_SEMI       &kp BSPC
+     &kp DEL      &kp HU_Q         &kp HU_W         &kp HU_F          &kp HU_P           &kp HU_B        &kp HU_J    &kp HU_L           &kp HU_U          &kp HU_Y          &kp HU_SEMI       &kp BSPC
 // ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
      &kp ESC      &hml LALT HU_A   &hml LGUI HU_R   &hml LCTRL HU_S   &hml LSHIFT HU_T   &kp HU_G        &kp HU_M    &hmr RSHIFT HU_N   &hmr RCTRL HU_E   &hmr RGUI HU_I    &hmr RALT HU_O    &kp RET
 // ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
-     &kp LSHIFT   &kp HU_Z         &kp HU_X         &kp HU_C          &kp HU_D           &kp HU_V        &kp HU_K    &kp HU_H           &kp HU_COMMA      &kp HU_DOT        &kp HU_MINUS      &mo L_SYS
+     &shift_cw LSHIFT 0 &kp HU_Z         &kp HU_X         &kp HU_C          &kp HU_D           &kp HU_V        &kp HU_K    &kp HU_H           &kp HU_COMMA      &kp HU_DOT        &kp HU_MINUS      &mo L_SYS
 // ╰───────────╯╰────────────────┴────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┴────────────────╯╰───────────╯
                                                     &key_repeat       &lt_thumb_l L_HUN TAB  &mo L_NUM      &kp SPACE   &mo L_SYM          &key_repeat
 //                                                ╰─────────────────┴──────────────────┴───────────╯   ╰───────────┴──────────────────┴─────────────────╯
