@@ -24,14 +24,14 @@
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5  // right-hand keys
 #define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                                  // thumb keys
 
-/* left thumb layer-tap; no require-prior-idle so the layer works mid-word */
+/* left thumb layer-tap; no require-prior-idle so the layer works mid-word,
+   hold-preferred so pressing a right-hand key picks the layer regardless of release order */
 ZMK_HOLD_TAP(lt_thumb_l,
-    flavor = "balanced";
+    flavor = "hold-preferred";
     tapping-term-ms = <280>;
     quick-tap-ms = <175>;                // repeat on tap-into-hold
     bindings = <&mo>, <&kp>;
-    hold-trigger-key-positions = <KEYS_R THUMBS>;
-    hold-trigger-on-release;             // delay positional check until key-release
+    hold-trigger-key-positions = <KEYS_R>;
 )
 
 /* left-hand HRMs */
@@ -61,6 +61,12 @@ ZMK_HOLD_TAP(shift_cw,
     flavor = "hold-preferred";
     tapping-term-ms = <200>;
     bindings = <&kp>, <&caps_word>;
+)
+
+/* double tap: real caps lock, which also capitalizes Hungarian accents */
+ZMK_TAP_DANCE(td_shift,
+    tapping-term-ms = <200>;
+    bindings = <&shift_cw LSHIFT 0>, <&kp CAPS>;
 )
 
 /* left outer thumb: repeat on tap, NAV layer on hold; no positional check so left-hand NAV keys work */
@@ -100,7 +106,7 @@ ZMK_HOLD_TAP(lt_rep,
 // ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
      &kp ESC      &hml LALT HU_A   &hml LGUI HU_R   &hml LCTRL HU_S   &hml LSHIFT HU_T   &kp HU_G        &kp HU_M    &hmr RSHIFT HU_N   &hmr RCTRL HU_E   &hmr RGUI HU_I    &hmr RALT HU_O    &kp RET
 // ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
-     &shift_cw LSHIFT 0 &kp HU_Z         &kp HU_X         &kp HU_C          &kp HU_D           &kp HU_V        &kp HU_K    &kp HU_H           &kp HU_COMMA      &kp HU_DOT        &kp HU_MINUS      &mo L_SYS
+     &td_shift    &kp HU_Z         &kp HU_X         &kp HU_C          &kp HU_D           &kp HU_V        &kp HU_K    &kp HU_H           &kp HU_COMMA      &kp HU_DOT        &kp HU_MINUS      &mo L_SYS
 // ╰───────────╯╰────────────────┴────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┴────────────────╯╰───────────╯
                                                     &lt_rep L_NAV 0   &lt_thumb_l L_HUN TAB  &mo L_NUM      &kp SPACE   &mo L_SYM          &key_repeat
 //                                                ╰─────────────────┴──────────────────┴───────────╯   ╰───────────┴──────────────────┴─────────────────╯
@@ -170,15 +176,15 @@ ZMK_HOLD_TAP(lt_rep,
                 hun_layer {
                         label = "HUN";
                         bindings = <
-// ╭───────╮╭───────┬───────┬───────┬───────┬───────╮   ╭───────┬───────┬─────────────────┬───────────────────────┬───────────────────────╮╭───────╮ 
-     &none    &none   &none   &none   &none   &none       &none   &none   &kp HU_U_UMLAUT   &kp HU_U_ACUTE          &kp HU_O_UMLAUT          &none
-// ├───────┤├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼─────────────────┼───────────────────────┼───────────────────────┤├───────┤
-     &none    &none   &none   &none   &none   &none       &none   &none   &kp HU_E_ACUTE    &kp HU_I_ACUTE          &kp HU_O_ACUTE           &none
-// ├───────┤├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼─────────────────┼───────────────────────┼───────────────────────┤├───────┤
-     &none    &none   &none   &none   &none   &none       &none   &none   &kp HU_A_ACUTE    &kp HU_U_DOUBLE_ACUTE   &kp HU_O_DOUBLE_ACUTE    &none
-// ╰───────╯╰───────┴───────┼───────┼───────┼───────┤   ├───────┼───────┼─────────────────┼───────────────────────┴───────────────────────╯╰───────╯
-                              &none   &none   &none       &none   &none   &none
-//                          ╰───────┴───────┴───────╯   ╰───────┴───────┴─────────────────╯
+// ╭────────╮╭───────┬───────┬───────┬───────┬───────╮   ╭───────┬───────────────────────┬─────────────────┬─────────────────┬───────────────────────╮╭───────╮
+     &trans    &trans  &trans  &trans  &trans  &trans      &trans  &kp HU_U_DOUBLE_ACUTE   &kp HU_U_UMLAUT   &kp HU_U_ACUTE    &kp HU_O_UMLAUT          &trans
+// ├────────┤├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────────────────────┼─────────────────┼─────────────────┼───────────────────────┤├───────┤
+     &trans    &trans  &trans  &trans  &trans  &trans      &trans  &kp HU_A_ACUTE          &kp HU_E_ACUTE    &kp HU_I_ACUTE    &kp HU_O_ACUTE           &trans
+// ├────────┤├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────────────────────┼─────────────────┼─────────────────┼───────────────────────┤├───────┤
+     &trans    &trans  &trans  &trans  &trans  &trans      &trans  &trans                  &trans            &trans            &kp HU_O_DOUBLE_ACUTE    &trans
+// ╰────────╯╰───────┴───────┼───────┼───────┼───────┤   ├───────┼───────────────────────┼─────────────────┼─────────────────┴───────────────────────╯╰───────╯
+                               &trans  &trans  &trans      &trans  &trans                  &trans
+//                           ╰───────┴───────┴───────╯   ╰───────┴───────────────────────┴─────────────────╯
                         >;
                 };
 
