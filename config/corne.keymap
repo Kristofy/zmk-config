@@ -24,12 +24,11 @@
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5  // right-hand keys
 #define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                                  // thumb keys
 
-/* left-hand HRMs with momentary layer */
-ZMK_HOLD_TAP(hml_m,
+/* left thumb layer-tap; no require-prior-idle so the layer works mid-word */
+ZMK_HOLD_TAP(lt_thumb_l,
     flavor = "balanced";
     tapping-term-ms = <280>;
     quick-tap-ms = <175>;                // repeat on tap-into-hold
-    require-prior-idle-ms = <150>;
     bindings = <&mo>, <&kp>;
     hold-trigger-key-positions = <KEYS_R THUMBS>;
     hold-trigger-on-release;             // delay positional check until key-release
@@ -81,7 +80,7 @@ ZMK_HOLD_TAP(hmr,
 // ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
      &kp LSHIFT   &kp HU_Z         &kp HU_X         &kp HU_C          &kp HU_D           &kp HU_V        &kp HU_K    &kp HU_H           &kp HU_COMMA      &kp HU_DOT        &kp HU_MINUS      &mo L_SYS
 // ╰───────────╯╰────────────────┴────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┴────────────────╯╰───────────╯
-                                                    &key_repeat       &hml_m L_HUN TAB   &mo L_NUM      &kp SPACE   &mo L_SYM          &key_repeat
+                                                    &key_repeat       &lt_thumb_l L_HUN TAB  &mo L_NUM      &kp SPACE   &mo L_SYM          &key_repeat
 //                                                ╰─────────────────┴──────────────────┴───────────╯   ╰───────────┴──────────────────┴─────────────────╯
                         >;
                 };
