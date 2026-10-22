@@ -7,7 +7,7 @@ manifest:
 
   projects:
     - name: zmk-helpers
-      revision: main
+      revision: v0.3 # should match the ZMK release
       path: modules/helpers
       remote: urob
     # - name: zmk-auto-layer
@@ -20,7 +20,7 @@ manifest:
     # My config
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: v0.3 # pinned release; main moved to Zephyr 4.1 and renamed boards
       import: app/west.yml
   self:
     path: config
