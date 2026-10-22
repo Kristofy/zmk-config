@@ -63,6 +63,15 @@ ZMK_HOLD_TAP(shift_cw,
     bindings = <&kp>, <&caps_word>;
 )
 
+/* left outer thumb: repeat on tap, NAV layer on hold; no positional check so left-hand NAV keys work */
+ZMK_HOLD_TAP(lt_rep,
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <175>;                // tap then hold auto-repeats
+    require-prior-idle-ms = <150>;       // mid-word it is always repeat
+    bindings = <&mo>, <&key_repeat>;
+)
+
 /* default continue-list assumes a US host layout; use the Hungarian -/_ key */
 &caps_word {
     continue-list = <HU_MINUS BSPC DEL>;
@@ -72,8 +81,9 @@ ZMK_HOLD_TAP(shift_cw,
 #define L_DEFAULT   0
 #define L_NUM       1
 #define L_SYM       2
-#define L_SYS       3
-#define L_HUN       4
+#define L_NAV       3
+#define L_SYS       4
+#define L_HUN       5
 
 &soft_off {
     hold-time-ms = <5000>; // Only turn off it the key is held for 5 seconds or longer.
@@ -92,7 +102,7 @@ ZMK_HOLD_TAP(shift_cw,
 // ├───────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├───────────┤
      &shift_cw LSHIFT 0 &kp HU_Z         &kp HU_X         &kp HU_C          &kp HU_D           &kp HU_V        &kp HU_K    &kp HU_H           &kp HU_COMMA      &kp HU_DOT        &kp HU_MINUS      &mo L_SYS
 // ╰───────────╯╰────────────────┴────────────────┼─────────────────┼──────────────────┼───────────┤   ├───────────┼──────────────────┼─────────────────┼─────────────────┴────────────────╯╰───────────╯
-                                                    &key_repeat       &lt_thumb_l L_HUN TAB  &mo L_NUM      &kp SPACE   &mo L_SYM          &key_repeat
+                                                    &lt_rep L_NAV 0   &lt_thumb_l L_HUN TAB  &mo L_NUM      &kp SPACE   &mo L_SYM          &key_repeat
 //                                                ╰─────────────────┴──────────────────┴───────────╯   ╰───────────┴──────────────────┴─────────────────╯
                         >;
                 };
@@ -100,14 +110,14 @@ ZMK_HOLD_TAP(shift_cw,
                 number_layer {
                         label = "NUMBER";
                         bindings = <
-// ╭───────────╮╭───────────┬───────────┬───────────┬────────────┬───────────╮   ╭───────────┬───────────┬───────────┬───────────┬───────╮╭───────╮ 
-     &kp HU_N0    &kp HU_N1   &kp HU_N2   &kp HU_N3   &kp HU_N4    &kp HU_N5       &kp HU_N6   &kp HU_N7   &kp HU_N8   &kp HU_N9   &none    &none
-// ├───────────┤├───────────┼───────────┼───────────┼────────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────┤├───────┤
-     &none        &kp LALT    &kp LGUI    &kp LCTRL   &kp LSHIFT   &kp HU_N1       &none       &kp HU_N4   &kp HU_N5   &kp HU_N6   &none    &none
-// ├───────────┤├───────────┼───────────┼───────────┼────────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────┤├───────┤
-     &none        &none       &none       &kp HU_N0   &kp HU_N9    &kp HU_N2       &kp HU_N0   &kp HU_N1   &kp HU_N2   &kp HU_N3   &none    &none
-// ╰───────────╯╰───────────┴───────────┼───────────┼────────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┴───────╯╰───────╯
-                                          &none       &none        &none           &none       &none       &none
+// ╭───────────╮╭───────────┬───────────┬───────────┬────────────┬───────────╮   ╭───────────┬───────────┬───────────┬───────────┬─────────────╮╭───────╮
+     &kp HU_N0    &kp HU_N1   &kp HU_N2   &kp HU_N3   &kp HU_N4    &kp HU_N5       &kp HU_N6   &kp HU_N7   &kp HU_N8   &kp HU_N9   &kp HU_PLUS    &trans
+// ├───────────┤├───────────┼───────────┼───────────┼────────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼─────────────┤├───────┤
+     &trans       &kp LALT    &kp LGUI    &kp LCTRL   &kp LSHIFT   &kp HU_N1       &kp HU_DOT  &kp HU_N4   &kp HU_N5   &kp HU_N6   &kp HU_COMMA   &trans
+// ├───────────┤├───────────┼───────────┼───────────┼────────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼─────────────┤├───────┤
+     &trans       &none       &none       &kp HU_N0   &kp HU_N9    &kp HU_N2       &kp HU_N0   &kp HU_N1   &kp HU_N2   &kp HU_N3   &kp HU_MINUS   &trans
+// ╰───────────╯╰───────────┴───────────┼───────────┼────────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┴─────────────╯╰───────╯
+                                          &trans      &trans       &trans          &trans      &trans      &trans
 //                                      ╰───────────┴────────────┴───────────╯   ╰───────────┴───────────┴───────────╯
                         >;
                 };
@@ -122,8 +132,23 @@ ZMK_HOLD_TAP(shift_cw,
 // ├─────────────┤├────────────────┼────────────────┼─────────────────┼──────────────────┼──────────────┤   ├─────────────┼──────────────────┼─────────────────┼─────────────────┼────────────────┤├──────────┤
      &none          &kp HU_LT        &kp HU_GT        &kp HU_HASH       &kp HU_AMPS        &kp HU_AT          &none         &kp HU_LBRC        &kp HU_RBRC       &none             &kp HU_STAR       &none
 // ╰─────────────╯╰────────────────┴────────────────┼─────────────────┼──────────────────┼──────────────┤   ├─────────────┼──────────────────┼─────────────────┼─────────────────┴────────────────╯╰──────────╯
-                                                      &none             &none              &none              &none         &none              &none
+                                                      &trans            &trans             &trans             &trans        &trans             &trans
 //                                                  ╰─────────────────┴──────────────────┴──────────────╯   ╰─────────────┴──────────────────┴─────────────────╯
+                        >;
+                };
+
+                nav_layer {
+                        label = "NAV";
+                        bindings = <
+// ╭───────────╮╭───────────┬───────────┬───────────┬────────────┬───────────╮   ╭───────────┬───────────┬───────────┬───────────┬───────────╮╭───────╮
+     &kp F10      &kp F1      &kp F2      &kp F3      &kp F4       &kp F5          &kp F6      &kp F7      &kp F8      &kp F9      &kp F11      &trans
+// ├───────────┤├───────────┼───────────┼───────────┼────────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤├───────┤
+     &trans       &kp LALT    &kp LGUI    &kp LCTRL   &kp LSHIFT   &none           &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &kp F12      &trans
+// ├───────────┤├───────────┼───────────┼───────────┼────────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤├───────┤
+     &trans       &none       &none       &none       &none        &none           &kp HOME    &kp PG_DN   &kp PG_UP   &kp END     &none        &none
+// ╰───────────╯╰───────────┴───────────┼───────────┼────────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┴───────────╯╰───────╯
+                                          &trans      &trans       &trans          &trans      &trans      &trans
+//                                      ╰───────────┴────────────┴───────────╯   ╰───────────┴───────────┴───────────╯
                         >;
                 };
 
